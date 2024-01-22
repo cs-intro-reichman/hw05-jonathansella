@@ -75,10 +75,11 @@ public class GameOfLife {
 		In in = new In(fileName); // Constructs an In object for reading the input file
 		int rows = Integer.parseInt(in.readLine());
 		int cols = Integer.parseInt(in.readLine());
-		int[][] board = new int[rows][cols];
-		for (int i = 0; i < board.length; i++) {
+		int[][] board = new int[rows+2][cols+2];
+		for (int i = 0; i < board.length-1; i++) {
 			String currentRow = in.readLine();
-			for (int j = 0; j < currentRow.length(); j++) {
+			if(currentRow!="" && currentRow!=null){
+				for (int j = 0; j < currentRow.length(); j++) {
 				if (currentRow != "") {
 					if (currentRow.charAt(j) == '.'){
 						board [i][j] = 0;
@@ -86,8 +87,9 @@ public class GameOfLife {
 						board [i][j] = 1;
 					}
 				}
-				
 			}
+			}
+			
 		}
 		return board;
 	}
@@ -156,8 +158,8 @@ public class GameOfLife {
 	
 	// Prints the board. Alive and dead cells are printed as 1 and 0, respectively.
     public static void print(int[][] arr) {
-		for (int i = 0; i < arr.length; i++) {
-			for (int j = 0; j < arr[0].length; j++) {
+		for (int i = 1; i < arr.length-1; i++) {
+			for (int j = 1; j < arr[0].length-1; j++) {
 				System.out.printf( "%3s" , arr[i][j]);
 			}
 			System.out.println();
