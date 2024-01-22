@@ -13,8 +13,8 @@ public class GameOfLife {
 		//// (Run one test at a time).
 		//test1("line.dat");
 		//test2("line.dat");
-		//test3("line.dat", 3);
-		play("line.dat");
+		test3("line.dat", 3);
+		//play("line.dat");
 
 	}
 	
@@ -76,15 +76,15 @@ public class GameOfLife {
 		int rows = Integer.parseInt(in.readLine());
 		int cols = Integer.parseInt(in.readLine());
 		int[][] board = new int[rows+2][cols+2];
-		for (int i = 0; i < board.length-1; i++) {
+		for (int i = 1; i < board.length-1; i++) {
 			String currentRow = in.readLine();
 			if(currentRow!="" && currentRow!=null){
-				for (int j = 0; j < currentRow.length(); j++) {
+				for (int j = 1; j < currentRow.length(); j++) {
 				if (currentRow != "") {
 					if (currentRow.charAt(j) == '.'){
-						board [i][j] = 0;
+						board [i][j+1] = 0;
 					} else if (currentRow.charAt(j) == 'x') {
-						board [i][j] = 1;
+						board [i][j+1] = 1;
 					}
 				}
 			}
